@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPANY XYZ - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        /* Centered Login Box */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .login-box {
+            background: rgb(0, 0, 0);
+            /* Glassmorphism Effect */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        input:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-left: 3px solid white;
+        }
+
+        /* Button */
+        .sign-in-btn {
+            width: 100%;
+            padding: 12px;
+            background: #fafafa;
+            color: black;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .sign-in-btn:hover {
+            background: rgba(131, 124, 124, 0.2);
+            color: white;
+        }
+
+        /* Sign Up Link */
+        .sign-up-link {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 12px;
+        }
+
+        .sign-up-link a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .sign-up-link a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #292a2b;
+            text-align: center;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        h1 {
+            color: #f9f9f9;
+        }
+
+        .faq-container .p-container {
+            color: #f9f9f9;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .faq-item svg {
+            width: 40px;
+            height: 40px;
+            fill: #716dc2;
+            margin-bottom: 10px;
+        }
+
+        .faq-item h3 {
+            color: #212529;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            color: rgb(36, 35, 35);
+            font-size: 14px;
+        }
+
+        .loader-container {
+            position: fixed;
+            /* Cover the entire viewport */
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            /* Ensures it's above everything */
+            background-color: #000;
+        }
+
+        .loader {
+            height: 70px;
+            width: 155px;
+            /* background-color: red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .loader h1 {
+            color: #fff;
+            font-size: 3vw;
+        }
+
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 500px) {
+            .login-box {
+                width: 90%;
+                padding: 30px;
+            }
+        }
+    </style>
+
+    <div class="container">
+        <div class="login-box">
+            <h1>LOG IN</h1>
+            <p>Welcome back! Please enter your credentials to continue.</p>
+
+            <% if (errorMessage && errorMessage.length> 0) { %>
+                <div class="error-message">
+                    <%= errorMessage %>
+                </div>
+                <% } %>
+
+                    <form method="POST" action="/login">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="username" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="sign-in-btn">Log In</button>
+                        <div class="sign-up-link">
+                            Don't have an account? <a href="http://localhost:3000/">Sign Up</a>
+                        </div>
+                    </form>
+        </div>
+    </div>
+    <div class="loader-container">
+        <div class="loader">
+            <h1>OfferX</h1>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+<script>
+    // Smooth Fade-in Animation
+    document.addEventListener("DOMContentLoaded", () => {
+        const loginBox = document.querySelector('.login-box');
+        loginBox.style.opacity = "0";
+        loginBox.style.transform = "translateY(-20px)";
+
+        setTimeout(() => {
+            loginBox.style.transition = "all 0.5s ease-out";
+            loginBox.style.opacity = "1";
+            loginBox.style.transform = "translateY(0)";
+        }, 200);
+    });
+
+    // Input Animation on Focus
+    document.querySelectorAll("input").forEach(input => {
+        input.addEventListener("focus", () => {
+            input.style.transform = "scale(1.05)";
+        });
+        input.addEventListener("blur", () => {
+            input.style.transform = "scale(1)";
+        });
+    });
+    let tl = gsap.timeline({ yoyo: true });
+    tl.from(".loader h1", {
+        y: 100, // Start below
+        opacity: 0,
+        duration: 1.8,
+        ease: "power4.out", // Smooth entry
+    })
+    tl.to(".loader h1", {
+        y: -100, // Move up
+        duration: 1.5,
+        opacity: 0,
+        ease: "bounce.out", // Bounces when reaching top
+    });
+
+    setTimeout(() => {
+        gsap.to(".loader-container", {
+            opacity: 0,
+            duration: 0.8,
+            onComplete: () => {
+                document.querySelector(".loader-container").style.display = "none";
+                document.querySelector(".main-content").style.display = "block";
+            }
+        });
+    }, 3000); // 3 seconds
+
+</script>
+
+</html>
