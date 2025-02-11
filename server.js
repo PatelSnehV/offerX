@@ -48,6 +48,12 @@ app.get("/", (req, res) => {
     successMessage: req.flash("success"),
   });
 });
+app.get("/FAQs", (req, res) => {
+  res.render("FAQs.ejs", {
+    errorMessage: req.flash("error"),
+    successMessage: req.flash("success"),
+  });
+});
 
 // Login Page (Now Displays Flash Messages)
 
