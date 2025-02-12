@@ -15,6 +15,7 @@
         .faq-container {
             max-width: 1000px;
             margin: 50px auto;
+            padding-top: 6vw;
         }
         h1 {
             color: #f9f9f9;
@@ -81,9 +82,84 @@
     font-size: 3vw;
     color: #f9f9f9;
     }
+    .navbar {
+      width: 93%;
+      height: 3.5vw;
+      margin-top: 3vw;
+      position: fixed;
+      z-index: 999;
+      top: 2%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5vw;
+      background: #ffffff21;
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    
+      /* filter: contrast(100%); */
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo img {
+      width: 30px;
+      margin-top: 1vw;
+      height: 30px;
+      margin-right: 3vw;
+    }
+
+    .logo h1 {
+      font-size: 30px;
+      /* margin: 10px; */
+      margin-top: 1vw;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      gap: 90px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #999;
+    }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo">
+          <h1>OfferX</h1>
+        </div>
+        <div class="nav-links">
+          <a href="http://localhost:3000/dashboard">HOME</a>
+          <a href="http://localhost:3000/blog">BLOG</a>
+          <a href="http://localhost:3000/FAQS">FAQS</a>
+          <a href="http://localhost:3000/about">ABOUT US</a>
+        </div>
+     
+      </nav>
     <div class="faq-container">
         <h1>Frequently Asked Questions</h1>
         <p class="p-container">Everything you need to know about offerX.</p>

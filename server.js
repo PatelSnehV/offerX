@@ -54,6 +54,18 @@ app.get("/FAQs", (req, res) => {
     successMessage: req.flash("success"),
   });
 });
+app.get("/about", (req, res) => {
+  res.render("about.ejs", {
+    errorMessage: req.flash("error"),
+    successMessage: req.flash("success"),
+  });
+});
+app.get("/blog", (req, res) => {
+  res.render("blog.ejs", {
+    errorMessage: req.flash("error"),
+    successMessage: req.flash("success"),
+  });
+});
 
 // Login Page (Now Displays Flash Messages)
 

@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COMPANY XYZ - Login</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Dosis:wght@200..800&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -15,7 +18,9 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: Dosis, sans-serif;
+           
+            /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; */
         }
 
         body {
@@ -239,11 +244,11 @@
                     <form method="POST" action="/login">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="username" placeholder="Enter your email" required>
+                            <input type="email" autocomplete="false" id="email" name="username" placeholder="Enter your email" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="••••••••" required>
+                            <input type="password" id="password" autocomplete="false" name="password" placeholder="••••••••" required>
                         </div>
                         <button type="submit" class="sign-in-btn">Log In</button>
                         <div class="sign-up-link">

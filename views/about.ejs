@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Discount Hunter</title>
+    <style>
+           .navbar {
+      width: 93%;
+      height: 4.8vw;
+      margin-top: 3vw;
+      position: fixed;
+      z-index: 999;
+      top: 2%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5vw;
+      background: #ffffff21;
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    
+      /* filter: contrast(100%); */
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo img {
+      width: 30px;
+      margin-top: 1vw;
+      height: 30px;
+      margin-right: 3vw;
+    }
+
+    .logo h1 {
+      font-size: 30px;
+      /* margin: 10px; */
+      margin-top: 1vw;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      gap: 90px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #999;
+    }
+        :root {
+            --background: #000;
+            --text: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 10vw;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, rgba(170, 37, 242, 0.974), rgb(95, 8, 236));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .mission {
+            padding: 6rem 0;
+        }
+
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+
+        }
+
+        .mission-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .mission-image {
+            position: relative;
+            height: 400px;
+            border-radius: 1rem;
+            overflow: hidden;
+            background-image: url("./Full-Service\ Digital\ Advertising\ Technology\ &\ Management\ -\ Mediavine.jpeg");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .cta {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, rgba(109, 40, 217, 0.2));
+
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background-color: rgb(58, 6, 140);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            background: var(--text);
+            color: rgb(58, 6, 140);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-image {
+                height: 300px;
+            }
+        }
+        .loader-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      background-color: #000;
+    }
+    .loader{
+      height: 70px;
+      width: 155px;
+      /* background-color: red; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .loader h1 {
+      color: #fff;
+      font-size: 3vw;
+    }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+          <h1>OfferX</h1>
+        </div>
+        <div class="nav-links">
+          <a href="http://localhost:3000/dashboard">HOME</a>
+          <a href="http://localhost:3000/blog">BLOG</a>
+          <a href="http://localhost:3000/FAQS">FAQS</a>
+          <a href="http://localhost:3000/about">ABOUT US</a>
+        </div>
+      </nav>
+      <div class="loader-container">
+        <div class="loader">
+          <h1>OfferX</h1>
+        </div>
+      </div>
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Unlocking Savings, Empowering Choices</h1>
+                <p>We're on a mission to help people save money by finding the best deals and discounts across multiple
+                    platforms and services. Our advanced platform makes it easy to discover savings opportunities you
+                    might have missed.</p>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">4.9+</div>
+                        <div>Average User</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$500+</div>
+                        <div>User Savings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">150+</div>
+                        <div>Platforms Deals</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mission">
+        <div class="container">
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h2>Our Mission</h2>
+                    <p>We believe everyone deserves access to the best deals available. Our platform aggregates
+                        discounts from hundreds of services and platforms, making it easier than ever to save money on
+                        the things you love.</p>
+                    <p>Using advanced algorithms and real-time tracking, we ensure you never miss out on savings
+                        opportunities. Whether it's shopping, travel, or digital services, we've got you covered.</p>
+                </div>
+                <div class="mission-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Saving?</h2>
+            <p>Join millions of smart shoppers who save money every day</p>
+            <a href="http://localhost:3000/dashboard" class="button">Get Started Now</a>
+        </div>
+    </section>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script>
+     let tl = gsap.timeline(); 
+tl.from(".loader h1", {
+  y: 100, // Start below
+  opacity: 0,
+  duration: 1.8,
+  ease: "power4.out", // Smooth entry
+})
+tl.to(".loader h1", {
+  y: -100, // Move up
+  duration: 1.5,
+  opacity:0,
+  ease: "bounce.out", // Bounces when reaching top
+});
+
+setTimeout(() => {
+            gsap.to(".loader-container", {
+                opacity: 0,
+                duration: 0.8,
+                onComplete: () => {
+                    document.querySelector(".loader-container").style.display = "none";
+                    document.querySelector(".main-content").style.display = "block";
+                }
+            });
+        }, 2500);
+</script>
+
+</html>
