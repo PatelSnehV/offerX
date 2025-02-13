@@ -296,6 +296,24 @@
     .nav-links a:hover {
       color: #999;
     }
+    
+    #backToTop {
+    position: fixed;
+    bottom: 0px;
+    right:50%;
+    display: none; /* Hidden by default */
+    background:#463b62; /* Attractive color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: opacity 0.3s;
+}
+#backToTop:hover {
+    background-color: #8b5cf6;
+}
     </style>
 </head>
 <body>
@@ -374,6 +392,7 @@
             </form>
         </section>
     </main>
+    <button id="backToTop">&#x2B06;</button> <!-- Unicode for Up Arrow -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
          let tl = gsap.timeline(); 
@@ -419,6 +438,23 @@ setTimeout(() => {
                     newsletterForm.reset();
                 }, 2000);
             }
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            let backToTopBtn = document.getElementById("backToTop");
+        
+            // Show button when user scrolls down 300px
+            window.onscroll = function () {
+                if (document.documentElement.scrollTop > 60) {
+                    backToTopBtn.style.display = "block";
+                } else {
+                    backToTopBtn.style.display = "none";
+                }
+            };
+        
+            // Scroll to top when clicked
+            backToTopBtn.addEventListener("click", function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
         });
     </script>
 </body>
