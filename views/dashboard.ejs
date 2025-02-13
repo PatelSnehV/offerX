@@ -3,21 +3,18 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>offerX</title>
-  <!-- <link rel="stylesheet" href="app.css"> -->
+  <title>offerX.</title>
+
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Dosis:wght@200..800&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
- 
+
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Dosis:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap');
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Dosis, sans-serif;
-    
-      /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; */
+      font-family: montserrat;
     }
 
     ::selection {
@@ -352,8 +349,8 @@
     }
 
     .loader h1 {
-   color: white;
-   font-size: 3vw;
+      color: white;
+      font-size: 3vw;
     }
 
     /* navbar styels */
@@ -377,7 +374,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
-    
+
       /* filter: contrast(100%); */
     }
 
@@ -437,55 +434,59 @@
       line-height: 1.6;
       margin-top: 10px;
     }
+
     .search-container {
-  display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.1); /* Light transparency */
-  backdrop-filter: blur(10px); /* Glass effect */
-  border-radius: 30px;
-  padding: 8px 15px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease-in-out;
-}
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      /* Light transparency */
+      backdrop-filter: blur(10px);
+      /* Glass effect */
+      border-radius: 30px;
+      padding: 8px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease-in-out;
+    }
 
-.search-container:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
+    .search-container:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
 
-.search-container input {
-  flex: 1;
-  border: none;
-  outline: none;
-  padding: 5px 15px;
-  background: transparent;
-  color: #fff;
-  font-size: 16px;
-}
+    .search-container input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 5px 15px;
+      background: transparent;
+      color: #fff;
+      font-size: 16px;
+    }
 
-.search-container input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
+    .search-container input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
 
-.search-container button {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  padding: 5px 20px;
-  border-radius: 20px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
+    .search-container button {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 5px 20px;
+      border-radius: 20px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+    }
 
-.search-container button:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-.main-content span{
-  display: none;
-}
+    .search-container button:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
 
+    .main-content span {
+      display: none;
+    }
   </style>
 </head>
+
 <body>
   <nav class="navbar">
     <div class="logo">
@@ -500,30 +501,30 @@
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="Search Deals with us...">
       <button onclick="searchDeals()"><i class="ri-search-2-line"></i></button>
-  </div>
+    </div>
   </nav>
 
   <div class="main-content">
     <h1 class="section-title">Most Popular This Month</h1>
     <p class="section-subtitle">Discover the best tools at the best price for your business to thrive. Updated daily
       with new exclusive deals.</p>
-      <span>NO RESULT FOUND</span>
+    <span>NO RESULT FOUND</span>
     <div class="offerList1">
       <div id="offerList" style="display: flex; flex-wrap: wrap; gap: 15px;">
         <img id="company-logo" src="" alt="Company Logo">
       </div>
     </div>
   </div>
-  <div class="loader-container">
+  <!-- <div class="loader-container">
     <div class="loader">
-    <h1>offerX</h1>
+      <h1>offerX</h1>
     </div>
-  </div>
+  </div> -->
 
 </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 <script>
   // Create GSAP Timeline
   let tl = gsap.timeline({ yoyo: true });
@@ -911,7 +912,7 @@
         card.style.display = "block";
       } else {
         card.style.display = "none";
- 
+
       }
     });
   }
@@ -919,19 +920,20 @@
   document.getElementById("searchInput").addEventListener("keyup", searchDeals);
 
   document.querySelectorAll('.deal-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const { offsetX, offsetY } = e;
-    const xMove = (offsetX / card.offsetWidth) * 20 - 5;
-    const yMove = (offsetY / card.offsetHeight) * 20 - 5;
-    
-    gsap.to(card, { x: xMove, y: yMove, duration: 0.3 });
-  });
+    card.addEventListener('mousemove', (e) => {
+      const { offsetX, offsetY } = e;
+      const xMove = (offsetX / card.offsetWidth) * 20 - 5;
+      const yMove = (offsetY / card.offsetHeight) * 20 - 5;
 
-  card.addEventListener('mouseleave', () => {
-    gsap.to(card, { x: 0, y: 0, duration: 0.3 });
+      gsap.to(card, { x: xMove, y: yMove, duration: 0.3 });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card, { x: 0, y: 0, duration: 0.3 });
+    });
   });
-});
 
 
 </script>
+
 </html>

@@ -4,7 +4,7 @@ const UserModel = require("./database");
 const session = require("express-session");
 const mongostore = require("connect-mongo");
 const passport = require("passport");
-const flash = require("connect-flash"); // 🔹 Import flash messages
+const flash = require("connect-flash");
 const app = express();
 
 require("./passport"); // Import passport file
