@@ -47,7 +47,12 @@
     }
 
 
-
+ nav a i{
+  font-size: 2vw;
+  color: #fff;
+  margin-left: -8vw;
+  margin-right: -6vw;
+ }
     .logo {
       font-size: 28px;
       font-weight: 800;
@@ -111,12 +116,13 @@
       top: 15px;
       right: 15px;
       color: var(--primary-color);
-      font-size: 20px;
-      animation: float 3s ease-in-out infinite;
+      font-size: 70px;
+      /* animation: float 3s ease-in-out infinite; */
+      color: #000;
+      z-index: 77;
     }
 
     .hot-deal i {
-      color: #f8f8f8;
       transition: all 0.3s ease;
     }
 
@@ -501,6 +507,7 @@
       <input type="text" id="searchInput" placeholder="Search Deals with us...">
       <button onclick="searchDeals()"><i class="ri-search-2-line"></i></button>
     </div>
+      <a href="http://localhost:3000/profile"><i class="ri-account-circle-line"></i></a>
   </nav>
 
   <div class="main-content">
@@ -514,11 +521,6 @@
       </div>
     </div>
   </div>
-  <!-- <div class="loader-container">
-    <div class="loader">
-      <h1>offerX</h1>
-    </div>
-  </div> -->
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -558,11 +560,7 @@
       " 6 months free ",
       " First deal free, then 99\u00e2\u201a\u00ac/year or invite friends "
     ],
-    "Amazon": [
-      "https://www.amazon.in/",
-      " 6 months free ",
-      " First deal free, then 99\u00e2\u201a\u00ac/year or invite friends "
-    ],
+    
     "ActiveCampaig": [
       "https://segment.com/industry/startups/",
       " Get a free ActiveCampaign Professional Plan for 12-months ",

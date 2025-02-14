@@ -26,7 +26,7 @@ app.use(
       mongoUrl: "mongodb://localhost:27017/passport",
       collectionName: "sessions",
     }),
-    cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 }, // 1 week
+    cookie: { maxAge: 10000 * 600 * 60 * 24 * 7 }, // 1 week
   })
 );
 
@@ -111,6 +111,12 @@ app.get("/login", (req, res) => {
 });
 app.get("/FAQs", (req, res) => {
   res.render("FAQs.ejs", {
+    errorMessage: req.flash("error"),
+    successMessage: req.flash("success"),
+  });
+});
+app.get("/profile", (req, res) => {
+  res.render("profile.ejs", {
     errorMessage: req.flash("error"),
     successMessage: req.flash("success"),
   });
