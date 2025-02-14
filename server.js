@@ -48,6 +48,40 @@ app.get("/", (req, res) => {
     successMessage: req.flash("success"),
   });
 });
+app.get('/logout', async (req, res, next) => {
+  try {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/'); // Redirect if no user is logged in
+    }
+
+    // Delete the logged-in user's record from the database
+    await UserModel.findOneAndDelete({ _id: req.user._id });
+
+    // Log out the user and destroy the session
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      req.session.destroy(() => {
+        res.redirect('/');
+      });
+    });
+  } catch (error) {
+    console.error("Error during logout and delete:", error);
+    req.flash("error", "An error occurred while logging out.");
+    res.redirect('/');
+  }
+});
+
+app.post('/logout', (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+});
+
 app.get("/FAQs", (req, res) => {
   res.render("FAQs.ejs", {
     errorMessage: req.flash("error"),
