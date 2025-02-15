@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Deals - iPhone 15</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .deal-card {
+            background: white;
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .deal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        .deal-card h2 {
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .deal-card p {
+            font-size: 16px;
+            margin: 8px 0;
+            color: #666;
+        }
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #d9534f;
+        }
+        .platform {
+            font-size: 16px;
+            color: #0275d8;
+        }
+        .get-deal-btn {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .get-deal-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>Best Deal Available</h1> -->
+    <div id="deal-container">
+        <p>Loading best deal...</p>
+    </div>
+
+    <script>
+        async function fetchDeal() {
+            try {
+                const response = await fetch('/get-lowest-price');
+                const data = await response.json();
+
+                if (data.error) {
+                    document.getElementById('deal-container').innerHTML = `<p>No deals available right now.</p>`;
+                    return;
+                }
+
+                document.getElementById('deal-container').innerHTML = `
+                    <div class="deal-card">
+                        <h2>iPhone 15</h2>
+                        <p class="price">₹${data.lowestPrice}</p>
+                        <p class="platform">Sold by: ${data.platform}</p>
+                        <p>You save: ₹${data.savings}</p>
+                        <a href="${data.url}" target="_blank" class="get-deal-btn">Buy Now</a>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error fetching deal:', error);
+                document.getElementById('deal-container').innerHTML = `<p>Error loading deals.</p>`;
+            }
+        }
+        fetchDeal();
+    </script>
+</body>
+</html>
