@@ -7,7 +7,508 @@
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Dosis:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: montserrat;
+}
+
+::selection {
+  color: black;
+  background: #dadada;
+}
+
+:root {
+  --primary-color: #333;
+  --secondary-color: #1a1a1a;
+  --hover-color: #f5f5f7;
+  --border-color: #e1e1e1;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
+}
+
+body {
+  /* display: flex; */
+  background-color: #f8f9fa;
+  color: var(--text-primary);
+  line-height: 1.5;
+  background-color: #1a1a1a;
+  padding-top: 4vw;
+}
+
+
+nav a i{
+font-size: 2vw;
+color: #fff;
+margin-left: -8vw;
+margin-right: -6vw;
+}
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--secondary-color);
+  letter-spacing: -0.5px;
+}
+
+.logo-icon {
+  color: var(--primary-color);
+  font-size: 24px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* Enhanced Main Content Styles */
+.main-content {
+  /* margin-left: 280px; */
+  padding: 60px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.deal-card {
+  margin: 60px;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 30px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+
+  height: 45vh;
+}
+
+.deal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+
+}
+
+.hot-deal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: var(--primary-color);
+  font-size: 70px;
+  /* animation: float 3s ease-in-out infinite; */
+  color: #000;
+  z-index: 77;
+}
+
+.hot-deal i {
+  transition: all 0.3s ease;
+}
+
+.hot-deal:hover i {
+  transform: translateY(-5px);
+  color: rgb(98, 95, 95);
+
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.deal-logo {
+  height: 55px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  object-fit: contain;
+  filter: grayscale(0.2);
+  transition: filter 0.3s ease;
+}
+
+.deal-card:hover .deal-logo {
+  filter: grayscale(0);
+}
+
+.deal-title {
+  font-size: 2vw;
+  font-weight: 500;
+  margin-bottom: 1px;
+  color: var(--text-primary);
+}
+
+.deal-description {
+  color: var(--text-secondary);
+  font-size: 1vw;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.deal-value {
+  color: var(--text-secondary);
+  font-size: 1vw;
+  margin-bottom: 20px;
+  padding: 8px 0px;
+  /* background-color: var(--hover-color); */
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+.get-deal-btn {
+  background-color: var(--secondary-color);
+  /* background-color: red; */
+  color: red;
+  padding: 7px 40px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+border: none;
+  transition: all 0.3s ease;
+  /* font-weight: 600; */
+  font-size: 15px;
+  margin-top: 13vw;
+
+}
+
+.get-deal-btn a {
+  border: none;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.get-deal-btn:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.get-deal-btn:active {
+  transform: translateY(0);
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 15px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 35px;
+  font-size: 16px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 250px;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+    padding: 20px;
+  }
+
+  .main-content {
+
+    width: 100%;
+    padding: 25px;
+  }
+
+  .deals-grid {
+    grid-template-columns: 3fr;
+  }
+}
+
+/* Tooltip */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background-color: var(--secondary-color);
+  color: white;
+  font-size: 12px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+[data-tooltip]:hover:before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+#offerList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.deal-card {
+  flex: 1 1 calc(20% - 15px);
+  max-width: calc(40% - 15px);
+
+}
+
+@media (max-width: 1200px) {
+  .deal-card {
+    flex: 1 1 calc(45% - 15px);
+    max-width: calc(45% - 15px);
+  }
+}
+
+@media (max-width: 768px) {
+  .deal-card {
+    flex: 1 1 calc(90% - 15px);
+    max-width: calc(90% - 15px);
+  }
+}
+
+@media (max-width: 480px) {
+  .deal-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* loader */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  background-color: #000;
+  flex-direction: column;
+}
+
+.loader {
+  height: 70px;
+  width: 155px;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.loader h1 {
+  color: white;
+  font-size: 3vw;
+}
+
+/* navbar styels */
+.navbar {
+  width: 93%;
+  height: 4.8vw;
+  margin-top: 3vw;
+  position: fixed;
+  z-index: 999;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5vw;
+  background: #ffffff21;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  /* filter: contrast(100%); */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo img {
+  width: 30px;
+  margin-top: 1vw;
+  height: 30px;
+  margin-right: 3vw;
+}
+
+.logo h1 {
+  font-size: 30px;
+  /* margin: 10px; */
+  margin-top: 1vw;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 90px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #999;
+}
+
+.section-title {
+  font-size: 3vw;
+  font-weight: 800;
+  color: #fafaff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+
+.section-subtitle {
+  font-size: 1.2vw;
+  color: #bbb;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  /* Light transparency */
+  backdrop-filter: blur(10px);
+  /* Glass effect */
+  border-radius: 30px;
+  padding: 8px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.search-container:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.search-container input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 5px 15px;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+}
+
+.search-container input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-container button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 5px 20px;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.search-container button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.main-content span {
+  display: none;
+}
+#backToTop {
+position: fixed;
+bottom: 5px;
+right: 48%;
+border-radius: 50%;
+display: none; /* Hidden by default */
+background:#463b62; /* Attractive color */
+color: rgba(255, 255, 255, 0.747);
+border: none;
+padding: 10px 20px;
+border-radius: 50px;
+cursor: pointer;
+font-size: 26px;
+transition: opacity 0.3s;
+}
+#backToTop:hover {
+background-color: #8b5cf6;
+}
+</style>
 <body>
   <nav class="navbar">
     <div class="logo">
@@ -23,7 +524,7 @@
       <input type="text" id="searchInput" placeholder="Search Deals with us...">
       <button onclick="searchDeals()"><i class="ri-search-2-line"></i></button>
     </div>
-      <a href="http://localhost:3000/profile"><i class="ri-account-circle-line"></i></a>
+      <a href="http://localhost:3000/deals"><i class="ri-account-circle-line"></i></a>
   </nav>
 
   <div class="main-content">
@@ -94,8 +595,12 @@
     });
   }, 4000);
 
-let amazonData={
-
+let data={
+  "Iphone 15": [
+    " Best ongoing Deals for Iphone 15",
+    "http://localhost:3000/deals"
+  ],
+ 
 }
   let output = "";
 
@@ -108,11 +613,10 @@ let amazonData={
     output += `
         <div class="deal-card">
             <span class="hot-deal"><i class="ri-bookmark-fill"></i></span>
-            <img src="${logoUrl}" class="deal-logo">
+       
             <div class="deal-title">${company}</div>
-            <div class="deal-description">${offerDetails[1]}</div>
-            <div class="deal-value">${offerDetails[2]}</div>
-            <button class="get-deal-btn"><a href="${offerDetails[0]}">Get this deal</a></button>
+          
+            <button class="get-deal-btn"><a href="${offerDetails[1]}">Get this deal</a></button>
         </div>`;
   }
   console.log(output)

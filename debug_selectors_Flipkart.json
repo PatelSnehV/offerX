@@ -1,0 +1,110 @@
+[
+  {
+    "tag": "HTML",
+    "class": "",
+    "id": "",
+    "text": "Just a quick repair needed\nHang on, we’re doing ev"
+  },
+  {
+    "tag": "HEAD",
+    "class": "",
+    "id": "",
+    "text": "Online Shopping India Mobile, Cameras, Lifestyle &"
+  },
+  {
+    "tag": "TITLE",
+    "class": "",
+    "id": "",
+    "text": "Online Shopping India Mobile, Cameras, Lifestyle &"
+  },
+  {
+    "tag": "META",
+    "class": "",
+    "id": "",
+    "text": ""
+  },
+  {
+    "tag": "STYLE",
+    "class": "",
+    "id": "",
+    "text": "html,\n\t\tbody {\n\t\t\tfont-family: Roboto, arial, taho"
+  },
+  {
+    "tag": "BODY",
+    "class": "",
+    "id": "",
+    "text": "Just a quick repair needed\nHang on, we’re doing ev"
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "id": "",
+    "text": ""
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "id": "",
+    "text": ""
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "id": "",
+    "text": ""
+  },
+  {
+    "tag": "IMG",
+    "class": "",
+    "id": "",
+    "text": ""
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "id": "",
+    "text": "Just a quick repair needed\nHang on, we’re doing ev"
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "id": "",
+    "text": "Just a quick repair needed\nHang on, we’re doing ev"
+  },
+  {
+    "tag": "IMG",
+    "class": "",
+    "id": "IMG_3",
+    "text": ""
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "id": "",
+    "text": "Just a quick repair needed"
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "id": "",
+    "text": "Hang on, we’re doing everything we can to fix this"
+  },
+  {
+    "tag": "BUTTON",
+    "class": "btn disable_btn",
+    "id": "timer_text",
+    "text": "Retry in 3 sec"
+  },
+  {
+    "tag": "BUTTON",
+    "class": "btn",
+    "id": "retry_btn",
+    "text": "Try now"
+  },
+  {
+    "tag": "SCRIPT",
+    "class": "",
+    "id": "",
+    "text": "let seconds = 3;\n\t\tconst timerText = document.getE"
+  }
+]

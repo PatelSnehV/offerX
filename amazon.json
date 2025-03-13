@@ -1,7 +1,7 @@
 {
-  "platform": "Amazon",
-  "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+  "name" : "Amazon",
   "product": "iPhone 15",
-  "lastUpdated": "2/15/2025, 4:09:47 AM",
-  "price": "61499"
+  "lastUpdated": "2/16/2025, 2:14:06 PM",
+  "price": "61999",
+  "url": "https://www.amazon.in/s?k=i+phone+15"
 }

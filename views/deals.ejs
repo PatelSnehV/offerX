@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #121212; color: #f5f5f5; text-align: center; padding: 40px; }
+        .container { max-width: 900px; margin: 40px auto; background: #1e1e1e; padding: 30px; border-radius: 12px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #2a2a2a; border-radius: 12px; overflow: hidden; }
+        th, td { padding: 18px; text-align: left; border-bottom: 2px solid #333; }
+        th { background: #ff9800; color: #121212; }
+        tr:hover { background-color: #333; }
+        .price { font-weight: bold; color: #4caf50; }
+        .last-updated { color: #bbb; }
+        .visit-button { background: #0082ff; color: white; padding: 10px 15px; border: none; border-radius: 6px; text-decoration: none; }
+        .visit-button:hover { background: #ff6600; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Price Tracker</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price (₹)</th>
+                    <th>Platform</th>
+                    <th>Last Updated</th>
+                    <th>Visit</th>
+                </tr>
+            </thead>
+            <tbody id="product-table-body">
+                <% products.forEach(product => { %>
+                    <tr>
+                        <td><%= product.product %></td>
+                        <td class="price">₹<%= product.price %></td>
+                        <td class="platform"><%= product.platform %></td>
+                        <td class="last-updated"><%= product.lastUpdated %></td>
+                        <td><a href="<%= product.url %>" target="_blank" class="visit-button">Go to Website</a></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

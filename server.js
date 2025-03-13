@@ -1,184 +1,90 @@
-const express = require("express");
-const { hashSync } = require("bcrypt");
-const UserModel = require("./database");
-const session = require("express-session");
-const mongostore = require("connect-mongo");
-const passport = require("passport");
-const flash = require("connect-flash");
-const app = express();
+const puppeteer = require("puppeteer-extra");
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+const fs = require("fs");
 
-require("./passport"); // Import passport file
+puppeteer.use(StealthPlugin());
 
-// Middleware for parsing JSON and urlencoded form data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const SITES = [
+  {
+    name: "Amazon",
+    product: "iPhone 15",
+    url: "https://www.amazon.in/dp/B0CHX2QMPQ",
+    priceSelector: ".a-price-whole",
+  },
+  {
+    name: "Flipkart",
+    product: "iPhone 15",
+    url: "https://www.flipkart.com/apple-iphone-15/p/itm2baef2216a242",
+    priceSelector: "div._30jeq3._16Jk6d",
+  },
+];
 
-// EJS template engine setup
-app.set("view-engine", "ejs");
+async function scrapeSite(site) {
+  console.log(`🔍 Scraping ${site.product} on ${site.name}...`);
 
-// Session middleware
-app.use(
-  session({
-    secret: "keyboard cat",
-    saveUninitialized: true,
-    resave: false,
-    store: mongostore.create({
-      mongoUrl: "mongodb://localhost:27017/passport",
-      collectionName: "sessions",
-    }),
-    cookie: { maxAge: 10000 * 600 * 60 * 24 * 7 }, // 1 week
-  })
-);
+  const browser = await puppeteer.launch({ headless: false, args: ["--no-sandbox"] }); // Open browser for debugging
+  const page = await browser.newPage();
 
-app.use(flash());
-// Middleware for passport and flash messages
-app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Home Route
-// app.get("/", (req, res) => {
-//   res.render("index.ejs");
-// });
-
-// Register Page
-app.get("/", (req, res) => {
-  res.render("heroPage.ejs", {
-    errorMessage: req.flash("error"),
-    successMessage: req.flash("success"),
-  });
-});
-app.get('/logout', async (req, res, next) => {
   try {
-    if (!req.isAuthenticated()) {
-      return res.redirect('/'); // Redirect if no user is logged in
-    }
+    await page.setUserAgent(
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    );
 
-    // Delete the logged-in user's record from the database
-    await UserModel.findOneAndDelete({ _id: req.user._id });
+    await page.goto(site.url, { waitUntil: "networkidle2", timeout: 60000 });
 
-    // Log out the user and destroy the session
-    req.logout((err) => {
-      if (err) {
-        return next(err);
+    // Save page content for debugging
+    const pageContent = await page.content();
+    fs.writeFileSync(`debug_${site.name}.html`, pageContent);
+
+    // Capture all selectors on the page for debugging
+    const allElements = await page.evaluate(() => {
+      return [...document.querySelectorAll("*")].map(el => ({
+        tag: el.tagName,
+        class: el.className,
+        id: el.id,
+        text: el.innerText.slice(0, 50)
+      }));
+    });
+
+    fs.writeFileSync(`debug_selectors_${site.name}.json`, JSON.stringify(allElements, null, 2));
+
+    await page.waitForSelector(site.priceSelector, { timeout: 10000 });
+
+    // Alternative price extraction
+    const price = await page.evaluate(() => {
+      const possibleSelectors = [
+        ".a-price-whole", // Amazon
+        "div._30jeq3._16Jk6d", // Flipkart
+        ".price", // Alternate
+        ".final-price", // Alternate
+      ];
+
+      for (let selector of possibleSelectors) {
+        let element = document.querySelector(selector);
+        if (element) return element.innerText.replace(/[^\d]/g, "");
       }
-      req.session.destroy(() => {
-        res.redirect('/');
-      });
+      return null;
     });
-  } catch (error) {
-    console.error("Error during logout and delete:", error);
-    req.flash("error", "An error occurred while logging out.");
-    res.redirect('/');
-  }
-});
 
-app.post('/logout', (req, res, next) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
+    if (!price) {
+      console.error(`❌ Price not found for ${site.product} on ${site.name}`);
+      return;
     }
-    res.redirect('/');
-  });
-});
 
-app.get("/FAQs", (req, res) => {
-  res.render("FAQs.ejs", {
-    errorMessage: req.flash("error"),
-    successMessage: req.flash("success"),
-  });
-});
-app.get("/about", (req, res) => {
-  res.render("about.ejs", {
-    errorMessage: req.flash("error"),
-    successMessage: req.flash("success"),
-  });
-});
-app.get("/blog", (req, res) => {
-  res.render("blog.ejs", {
-    errorMessage: req.flash("error"),
-    successMessage: req.flash("success"),
-  });
-});
-
-// Login Page (Now Displays Flash Messages)
-
-app.get("/login", (req, res) => {
-  res.render("login.ejs", {
-    errorMessage: req.flash("error"),
-    successMessage: req.flash("success"),
-  });
-});
-app.get("/FAQs", (req, res) => {
-  res.render("FAQs.ejs", {
-    errorMessage: req.flash("error"),
-    successMessage: req.flash("success"),
-  });
-});
-app.get("/profile", (req, res) => {
-  res.render("profile.ejs", {
-    errorMessage: req.flash("error"),
-    successMessage: req.flash("success"),
-  });
-});
-// ✅ Fixed Login Route with Error Handling
-app.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/dashboard",
-    failureRedirect: "/login", // Redirect back to login if failed
-    failureFlash: true, // Enable flash messages
-  })
-);
-
-//  Page (Only for Authenticated Users)
-app.get("/dashboard", (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render("dashboard.ejs", { username: req.user.username });
-  } else {
-    res.status(401).send("Unauthorized. Please log in.");
+    console.log(`✅ ${site.product} on ${site.name}: ₹${price}`);
+  } catch (error) {
+    console.error(`❌ Error scraping ${site.product} on ${site.name}:`, error);
+  } finally {
+    await browser.close();
   }
-});
+}
 
-// Register Route
-
-app.post("/", async (req, res, next) => {
-  console.log("Received Data:", req.body);
-
-  // Check if the user already exists
-  const existingUser = await UserModel.findOne({ username: req.body.username });
-
-  if (existingUser) {
-    req.flash("error", "You are already registered. Please log in.");
-    return res.redirect("/login"); // Redirect to login page if user exists
+async function scrapeAllSites() {
+  console.log("🚀 Starting Web Scraping...");
+  for (const site of SITES) {
+    await scrapeSite(site);
   }
+  console.log("✅ Scraping completed!");
+}
 
-  // Create a new user
-  const user = new UserModel({
-    username: req.body.username,
-    password: hashSync(req.body.password, 10),
-  });
-
-  user
-    .save()
-    .then((user) => {
-      console.log("User saved:", user);
-
-      // Automatically log in the user after successful registration
-      req.login(user, (err) => {
-        if (err) {
-          console.log("Login error:", err);
-          req.flash("error", "There was an error logging you in.");
-          return res.redirect("/");
-        }
-        return res.redirect("/dashboard"); // Redirect after login
-      });
-    })
-    .catch((err) => {
-      console.log("Error saving user:", err);
-      req.flash("error", "There was an error during registration.");
-      res.redirect("/");
-    });
-});
-
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+scrapeAllSites();

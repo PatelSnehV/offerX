@@ -79,11 +79,10 @@ app.get('/get-lowest-price', (req, res) => {
     }
     res.json(bestDeal);
 });
-
-// Simulated cron job to update JSONs every hour (Replace with actual scraping cron job)
-cron.schedule('0 * * * *', () => {
-    console.log("✅ JSON files updated via cron job!");
-});
+//Simulated cron job to update JSONs every hour (Replace with actual scraping cron job)
+// cron.schedule('0 * * * *', () => {
+//     console.log("✅ JSON files updated via cron job!");
+// });
 
 
 app.listen(port, () => {
